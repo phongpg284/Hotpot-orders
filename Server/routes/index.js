@@ -4,21 +4,21 @@ const mongoose =  require("mongoose")
 const Order = require("../modals/orders")
 const Item = require("../modals/items")
 
-router.get("/order", function(req,res) { 
+router.get("/orders", function(req,res) { 
     Order.find(function (err, order) {
         if(err) console.log(err)
         res.json(order)
     })
 })
 
-router.get("/order/:id", function(req,res) {
-    Order.findById(mongoose.Types.ObjectId(req.params.id), function (err, order){
-        if(err) console.log(err)
-        res.json(order)
-    })
-})
+// router.get("/orders/:id", function(req,res) {
+//     Order.findById(mongoose.Types.ObjectId(req.params.id), function (err, order){
+//         if(err) console.log(err)
+//         res.json(order)
+//     })
+// })
 
-router.post('/order', function(req,res){
+router.post('/orders', function(req,res){
     // var newOrder = new Order({
     //     _id: new mongoose.Types.ObjectId(),
     //     "userId": 0812,
@@ -27,9 +27,10 @@ router.post('/order', function(req,res){
     // "priceType": 100,
     // "hotpotType": "lau chua cay"
     // })
+    
     var newOrder = new Order({
         ...req.body,
-        _id: new mongoose.Types.ObjectId()
+        id: new mongoose.Types.ObjectId()
     });
     console.log(newOrder)
     newOrder.save(function(err, order ){
@@ -58,7 +59,7 @@ router.get("/items/:id", function(req,res) {
 router.post("/items", function (req, res) {
     var items = new Item({
         ...req.body,
-        _id: new mongoose.Types.ObjectId()
+        id: new mongoose.Types.ObjectId()
     });
     items.save(function (err, items) {
         if (err)

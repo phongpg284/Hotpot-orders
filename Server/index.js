@@ -4,6 +4,7 @@ const express = require("express");
 const router = require("./routes/index")
 const mongoose = require("mongoose");
 const path = require("path")
+const cors = require("cors")
 
 mongoose.connect(process.env.MONGO_URL,{useNewUrlParser:true, useUnifiedTopology: true }, (err) => {
     if(err) throw err;
@@ -16,7 +17,16 @@ app.use(express.urlencoded({
 }));
 
 app.use(express.json());
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(cors())
+app.use((req, res, next) => {
+    res.setHeader('Access-Control-Allow-Origin', ['*']);
+    res.setHeader('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
+    res.append('Access-Control-Allow-Headers', 'Content-Type');
+    res.append( 'Access-Control-Expose-Headers', 'Content-Range')
+    res.append('Content-Range','bytes : 0-9/*')
+    next()
+});
+// app.use(express.static(path.join(__dirname, 'public')));
 app.use("/", router)
 
 app.listen(PORT, () => {
