@@ -1,11 +1,12 @@
-import logo from './logo.svg';
 import './App.css';
 import { Admin, Resource } from "react-admin"
-import { OrderList } from './Orders';
+import { OrderList } from './List/Orders';
+import { IngredientOrderList } from './List/IngredientOrders';
+import { IngredientList } from './List/Ingredients';
+import { HotpotList } from './List/Hotpots';
 import { useEffect, useState } from 'react';
 import simpleRestProvider from 'ra-data-simple-rest';
 
-import jsonServerProvider from 'ra-data-json-server';
 
 
 function getAllOrders() {
@@ -43,6 +44,9 @@ function App() {
     // <div>heh</div>
     <Admin dataProvider={simpleRestProvider("http://localhost:5000/api")}>
         <Resource name="orders" list={OrderList} />
+        <Resource name="ingredientOrder" list={IngredientOrderList} />
+        <Resource name="ingredients" list={IngredientList} />
+        <Resource name="hotpots" list={HotpotList} />
     </Admin>
   )
 }

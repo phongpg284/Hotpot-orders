@@ -9,4 +9,4 @@ var orderSchema = new mongoose.Schema({
     createdAt: {type: Date, default: Date.now}
 });
 
-module.exports = mongoose.model('order', orderSchema);
+module.exports = mongoose.model('Orders', orderSchema);
