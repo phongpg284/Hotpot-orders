@@ -41,7 +41,7 @@ function App() {
 
   return (
     // <div>heh</div>
-    <Admin dataProvider={simpleRestProvider("http://localhost:5000")}>
+    <Admin dataProvider={simpleRestProvider("http://localhost:5000/api")}>
         <Resource name="orders" list={OrderList} />
     </Admin>
   )

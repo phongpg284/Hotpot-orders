@@ -27,7 +27,7 @@ app.use((req, res, next) => {
     next()
 });
 // app.use(express.static(path.join(__dirname, 'public')));
-app.use("/", router)
+app.use("/api", router)
 
 app.listen(PORT, () => {
     console.log(`Server listen at port: ${PORT}`)
