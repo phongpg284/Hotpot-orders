@@ -19,7 +19,7 @@
         - PORT: server port, default `5000`
         - DB_URI: MongoDB url, default `mongodb://localhost:27017/hotpot`  
     - Web:  
-        - REACT_APP_API_URL: api url, default `http://localhost:3001/graphql`
+        - REACT_APP_API_URL: api url, default `http://localhost:5000/api`
 
 ### `.env file`
 Default in localhost:
