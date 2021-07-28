@@ -4,10 +4,8 @@ import { OrderList } from './List/Orders';
 import { IngredientOrderList } from './List/IngredientOrders';
 import { IngredientList } from './List/Ingredients';
 import { HotpotList } from './List/Hotpots';
-import { useEffect, useState } from 'react';
-import simpleRestProvider from 'ra-data-simple-rest';
-
-
+import { OrderEdit } from './Edit/Order';
+import DataProvider from './DataProvider';
 
 function getAllOrders() {
   return fetch("/orders", {
@@ -30,20 +28,14 @@ function getAllOrders() {
   // })
 }
 
-
 function App() {
-  const [orders, setOrders] = useState([])
   
-
-  // useEffect(() => {
-  //   getAllOrders()
-  //   .then(orders => setOrders(orders))
-  // },[])
+  // console.log(dataProvider.delete)
 
   return (
     // <div>heh</div>
-    <Admin dataProvider={simpleRestProvider("http://localhost:5000/api")}>
-        <Resource name="orders" list={OrderList} />
+    <Admin dataProvider={DataProvider}>
+        <Resource name="orders" list={OrderList} edit={OrderEdit}/>
         <Resource name="ingredientOrder" list={IngredientOrderList} />
         <Resource name="ingredients" list={IngredientList} />
         <Resource name="hotpots" list={HotpotList} />
