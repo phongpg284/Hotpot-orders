@@ -10,14 +10,14 @@ router.get("/hotpots", function(req,res) {
     })
 })
 
-// router.get("/hotpots/:id", function(req,res) {
-    
-//     Item.findById(mongoose.Types.ObjectId(req.params.id), function (err, item) {
-//         if(err)
-//         console.log(err);
-//         res.json(item);
-//     })
-// })
+router.get("/hotpots/:id", function(req,res) {
+    console.log(req.params.id)
+    Hotpot.findById(mongoose.Types.ObjectId(req.params.id), function (err, hotpot) {
+        if(err)
+        console.log(err);
+        res.json(hotpot);
+    })
+})
 
 router.post("/hotpots", function (req, res) {
     var hotpot = new Hotpot({

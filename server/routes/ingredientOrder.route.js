@@ -2,18 +2,18 @@ var router = require("express").Router()
 const IngredientOrder = require("../modals/ingredientOrders")
 var mongoose = require("mongoose");
 router.get("/ingredientOrder", function(req,res) {
-    IngredientOrder.find(function (err, ingredientOrder) {
+    IngredientOrder.find(function (err, ingredientOrders) {
         if(err)
         console.log(err);
-        res.json(ingredientOrder);
+        res.json(ingredientOrders);
     })
 })
 
 router.get("/ingredientOrder/:id", function(req,res) {
-    IngredientOrder.findById(mongoose.Types.ObjectId(req.params.id), function (err, item) {
+    IngredientOrder.findById(mongoose.Types.ObjectId(req.params.id), function (err, ingredientOrder) {
         if(err)
         console.log(err);
-        res.json(item);
+        res.json(ingredientOrder);
     })
 })
 

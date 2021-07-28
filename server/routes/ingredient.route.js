@@ -11,10 +11,10 @@ router.get("/ingredients", function(req,res) {
 
 router.get("/ingredients/:id", function(req,res) {
     
-    Ingredient.findById(mongoose.Types.ObjectId(req.params.id), function (err, item) {
+    Ingredient.findById(mongoose.Types.ObjectId(req.params.id), function (err, ingredients) {
         if(err)
         console.log(err);
-        res.json(item);
+        res.json(ingredients);
     })
 })
 
