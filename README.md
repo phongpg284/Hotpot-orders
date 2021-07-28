@@ -21,9 +21,6 @@
     - Web:  
         - REACT_APP_API_URL: api url, default `http://localhost:3001/graphql`
 
-## Run:
-- Run `yarn dev` at root folder `./`
-
 ### `.env file`
 Default in localhost:
 - In server:
@@ -37,3 +34,8 @@ REACT_APP_API_URL=http://localhost:5000/api
 - api/hotpots: add total ingredients of menu
 - api/orders: add orders list (login/tableID/Price/Numbers/...)
 - api/hotpots/`ID` :show lists of a menu
+
+
+
+## Run:
+- Run `yarn dev` at root folder `./`
