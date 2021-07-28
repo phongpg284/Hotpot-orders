@@ -1,5 +1,5 @@
 import * as React from "react";
-import { List, Datagrid, TextField, DateField } from 'react-admin';
+import { List, Datagrid, TextField, DateField, DeleteButton } from 'react-admin';
 
 export const OrderList = (props) => (
     <List {...props} title="List of orders">
@@ -10,6 +10,7 @@ export const OrderList = (props) => (
             <TextField source="priceType" label="Price Type"/>
             <TextField source="hotpotType" label="HotpotType"/>
             <DateField source="createdAt" label="Created At" showTime/>
+            <DeleteButton undoable={false}/>
         </Datagrid>
     </List>
 );
