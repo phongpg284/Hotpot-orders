@@ -29,4 +29,11 @@ router.post("/ingredientOrder", function (req, res) {
     })
 })
 
+router.delete("/ingredientOrder/:id", function(req,res) {
+    IngredientOrder.findOneAndDelete({id: mongoose.Types.ObjectId(req.params.id)}, function (err, ingredientOrder){
+        if(err) console.log(err)
+        res.json(ingredientOrder)
+    })
+})
+
 module.exports = router;

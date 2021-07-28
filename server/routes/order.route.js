@@ -8,12 +8,12 @@ router.get("/orders", function(req,res) {
     })
 })
 
-// router.get("/orders/:id", function(req,res) {
-//     Order.findById(mongoose.Types.ObjectId(req.params.id), function (err, order){
-//         if(err) console.log(err)
-//         res.json(order)
-//     })
-// })
+router.get("/orders/:_id", function(req,res) {
+    Order.findById(mongoose.Types.ObjectId(req.params._id), function (err, order){
+        if(err) console.log(err)
+        res.json(order)
+    })
+})
 
 router.post('/orders', function(req,res){
     // var newOrder = new Order({
@@ -35,5 +35,13 @@ router.post('/orders', function(req,res){
         res.json(order)
     })
 })
+
+router.delete("/orders/:id", function(req,res) {
+    Order.findOneAndDelete({id: mongoose.Types.ObjectId(req.params.id)}, function (err, order){
+        if(err) console.log(err)
+        res.json(order)
+    })
+})
+
 
 module.exports = router;

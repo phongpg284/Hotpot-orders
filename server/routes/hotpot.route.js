@@ -32,4 +32,11 @@ router.post("/hotpots", function (req, res) {
     })
 })
 
+router.delete("/hotpots/:id", function(req,res) {
+    Hotpot.findOneAndDelete({id: mongoose.Types.ObjectId(req.params.id)}, function (err, hotpot){
+        if(err) console.log(err)
+        res.json(hotpot)
+    })
+})
+
 module.exports = router;
