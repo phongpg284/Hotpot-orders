@@ -52,10 +52,10 @@ REACT_APP_API_URL=http://localhost:5000/api
     - `DELETE` /api/orders: Delete hotpot order in database
 
 - `/api/ingredientOrder`: ingredient orders
-    - `GET` /api/ingredientOrder: Get all ingredient orders
-    - `GET` /api/ingredientOrder/id: Get specified ingredient orders by `id` field
-    - `POST` /api/ingredientOrder: Add new ingredient order
-    - `DELETE` /api/ingredientOrder: Delete ingredient order in database
+    - `GET` /api/ingredientOrders: Get all ingredient orders
+    - `GET` /api/ingredientOrders/id: Get specified ingredient orders by `id` field
+    - `POST` /api/ingredientOrders: Add new ingredient order
+    - `DELETE` /api/ingredientOrders: Delete ingredient order in database
 
 ## Run:
 - Run `yarn dev` at root folder `./`
