@@ -1,7 +1,7 @@
 var mongoose = require("mongoose");
+const mongoosePaginate = require('mongoose-paginate-v2');
 
 var hotpotSchema = new mongoose.Schema({
-    id: mongoose.Schema.Types.ObjectId,
     name: {type: String, require: true},
     ingredients: [{
             id: Number,
@@ -9,4 +9,16 @@ var hotpotSchema = new mongoose.Schema({
         }], 
 })
 
-module.exports = mongoose.model("Hotpots", hotpotSchema);
+hotpotSchema.method("toJSON", function() {
+    const { __v, _id, ...object } = this.toObject();
+    object.id = _id;
+    return object;
+});
+
+hotpotSchema.plugin(mongoosePaginate);
+
+const hotpotModel = mongoose.model('Hotpots', hotpotSchema);
+
+hotpotModel.paginate().then({});
+
+module.exports = hotpotModel;

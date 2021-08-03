@@ -6,12 +6,12 @@ router.get("/hotpots", function(req,res) {
     Hotpot.find(function (err, hotpots) {
         if(err)
         console.log(err);
+        res.setHeader("Content-Range", hotpots.length)
         res.json(hotpots);
     })
 })
 
 router.get("/hotpots/:id", function(req,res) {
-    console.log(req.params.id)
     Hotpot.findById(mongoose.Types.ObjectId(req.params.id), function (err, hotpot) {
         if(err)
         console.log(err);
@@ -20,10 +20,7 @@ router.get("/hotpots/:id", function(req,res) {
 })
 
 router.post("/hotpots", function (req, res) {
-    var hotpot = new Hotpot({
-        ...req.body,
-        id: new mongoose.Types.ObjectId()
-    });
+    var hotpot = new Hotpot(req.body);
     console.log(hotpot)
     hotpot.save(function (err, hotpots) {
         if (err)
@@ -33,7 +30,7 @@ router.post("/hotpots", function (req, res) {
 })
 
 router.delete("/hotpots/:id", function(req,res) {
-    Hotpot.findOneAndDelete({id: mongoose.Types.ObjectId(req.params.id)}, function (err, hotpot){
+    Hotpot.findByIdAndDelete(mongoose.Types.ObjectId(req.params.id), function (err, hotpot){
         if(err) console.log(err)
         res.json(hotpot)
     })

@@ -5,13 +5,14 @@ router.get("/ingredients", function(req,res) {
     Ingredient.find(function (err, ingredients) {
         if(err)
         console.log(err);
+        res.setHeader("Content-Range", ingredients.length)
         res.json(ingredients);
     })
 })
 
 router.get("/ingredients/:id", function(req,res) {
     
-    Ingredient.findById(mongoose.Types.ObjectId(req.params.id), function (err, ingredients) {
+    Ingredient.findOne({id: req.params.id}, function (err, ingredients) {
         if(err)
         console.log(err);
         res.json(ingredients);
@@ -19,10 +20,8 @@ router.get("/ingredients/:id", function(req,res) {
 })
 
 router.post("/ingredients", function (req, res) {
-    var ingredients = new Ingredient({
-        ...req.body,
-        id: new mongoose.Types.ObjectId()
-    });
+    console.log(req.body)
+    var ingredients = new Ingredient(req.body);
     ingredients.save(function (err, ingredients) {
         if (err)
         console.log(err)
@@ -31,7 +30,7 @@ router.post("/ingredients", function (req, res) {
 })
 
 router.delete("/ingredients/:id", function(req,res) {
-    Ingredient.findOneAndDelete({id: mongoose.Types.ObjectId(req.params.id)}, function (err, ingredient){
+    Ingredient.findOneAndDelete({id: req.params.id}, function (err, ingredient){
         if(err) console.log(err)
         res.json(ingredient)
     })

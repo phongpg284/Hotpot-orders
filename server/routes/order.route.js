@@ -1,10 +1,12 @@
 var router = require("express").Router()
 const Order = require("../modals/orders")
 var mongoose = require("mongoose");
+
 router.get("/orders", function(req,res) { 
-    Order.find(function (err, order) {
+    Order.find(function (err, orders) {
         if(err) console.log(err)
-        res.json(order)
+        res.setHeader("Content-Range", orders.length)
+        res.json(orders);
     })
 })
 
@@ -16,10 +18,7 @@ router.get("/orders/:id", function(req,res) {
 })
 
 router.post('/orders', function(req,res){
-    var newOrder = new Order({
-        ...req.body,
-        id: new mongoose.Types.ObjectId()
-    });
+    var newOrder = new Order(req.body);
     console.log(newOrder)
     newOrder.save(function(err, order ){
         if (err)  console.log(err);
@@ -28,7 +27,7 @@ router.post('/orders', function(req,res){
 })
 
 router.delete("/orders/:id", function(req,res) {
-    Order.findOneAndDelete({id: mongoose.Types.ObjectId(req.params.id)}, function (err, order){
+    Order.findByIdAndDelete(mongoose.Types.ObjectId(req.params.id), function (err, order){
         if(err) console.log(err)
         res.json(order)
     })

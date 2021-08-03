@@ -1,5 +1,6 @@
 import * as React from "react";
 import { List, Datagrid, TextField, DateField, DeleteButton } from 'react-admin';
+import PostPagination from "../Pagination/PostPagination";
 
 export const IngredientOrderList = (props) => (
     <List {...props} title="List of Ingredient Orders">

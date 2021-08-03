@@ -5,6 +5,7 @@ router.get("/ingredientOrder", function(req,res) {
     IngredientOrder.find(function (err, ingredientOrders) {
         if(err)
         console.log(err);
+        res.setHeader("Content-Range", ingredientOrders.length)
         res.json(ingredientOrders);
     })
 })
@@ -18,10 +19,7 @@ router.get("/ingredientOrder/:id", function(req,res) {
 })
 
 router.post("/ingredientOrder", function (req, res) {
-    var ingredientOrder = new IngredientOrder({
-        ...req.body,
-        id: new mongoose.Types.ObjectId()
-    });
+    var ingredientOrder = new IngredientOrder(req.body);
     ingredientOrder.save(function (err, ingredientOrder) {
         if (err)
         console.log(err)
@@ -30,7 +28,7 @@ router.post("/ingredientOrder", function (req, res) {
 })
 
 router.delete("/ingredientOrder/:id", function(req,res) {
-    IngredientOrder.findOneAndDelete({id: mongoose.Types.ObjectId(req.params.id)}, function (err, ingredientOrder){
+    IngredientOrder.findByIdAndDelete(mongoose.Types.ObjectId(req.params.id), function (err, ingredientOrder){
         if(err) console.log(err)
         res.json(ingredientOrder)
     })
