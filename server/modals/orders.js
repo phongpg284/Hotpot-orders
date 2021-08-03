@@ -2,7 +2,7 @@ var mongoose = require('mongoose')
 const mongoosePaginate = require('mongoose-paginate-v2');
 
 var orderSchema = new mongoose.Schema({
-    userId: {type: Number, required:true},
+    userId: {type: String, required:true},
     guestQty: {type: Number, require: true},
     tableId: {type: Number, require: true},
     priceType: {type: Number, require: true},

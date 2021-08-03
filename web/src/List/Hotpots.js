@@ -7,8 +7,6 @@ export const HotpotList = (props) => (
         <Datagrid>
             <TextField source="name" label="Name" />
             <TextField source="ingredients" label="Ingredients"/>
-            <TextField source="priceType" label="Price Type"/>
-            <DateField source="createdAt" label="Created At" showTime/>
             <DeleteButton undoable={false}/>
         </Datagrid>
     </List>

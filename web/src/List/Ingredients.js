@@ -7,7 +7,6 @@ export const IngredientList = (props) => (
         <Datagrid>
             <TextField source="name" label="Name" />
             <TextField source="quantity" label="Quantity"/>
-            <DateField source="createdAt" label="Created At" showTime/>
             <DeleteButton undoable={false}/>
         </Datagrid>
     </List>

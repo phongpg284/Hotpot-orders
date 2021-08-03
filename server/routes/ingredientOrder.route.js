@@ -1,7 +1,7 @@
 var router = require("express").Router()
 const IngredientOrder = require("../modals/ingredientOrders")
 var mongoose = require("mongoose");
-router.get("/ingredientOrder", function(req,res) {
+router.get("/ingredientOrders", function(req,res) {
     IngredientOrder.find(function (err, ingredientOrders) {
         if(err)
         console.log(err);
@@ -10,7 +10,7 @@ router.get("/ingredientOrder", function(req,res) {
     })
 })
 
-router.get("/ingredientOrder/:id", function(req,res) {
+router.get("/ingredientOrders/:id", function(req,res) {
     IngredientOrder.findById(mongoose.Types.ObjectId(req.params.id), function (err, ingredientOrder) {
         if(err)
         console.log(err);
@@ -18,7 +18,7 @@ router.get("/ingredientOrder/:id", function(req,res) {
     })
 })
 
-router.post("/ingredientOrder", function (req, res) {
+router.post("/ingredientOrders", function (req, res) {
     var ingredientOrder = new IngredientOrder(req.body);
     ingredientOrder.save(function (err, ingredientOrder) {
         if (err)
@@ -27,7 +27,7 @@ router.post("/ingredientOrder", function (req, res) {
     })
 })
 
-router.delete("/ingredientOrder/:id", function(req,res) {
+router.delete("/ingredientOrders/:id", function(req,res) {
     IngredientOrder.findByIdAndDelete(mongoose.Types.ObjectId(req.params.id), function (err, ingredientOrder){
         if(err) console.log(err)
         res.json(ingredientOrder)
