@@ -11,7 +11,7 @@ function App() {
   return (
     <Admin dataProvider={DataProvider}>
         <Resource name="orders" list={OrderList} edit={OrderEdit} />
-        <Resource name="ingredientOrder" list={IngredientOrderList} />
+        <Resource name="ingredientOrders" list={IngredientOrderList} />
         <Resource name="ingredients" list={IngredientList} />
         <Resource name="hotpots" list={HotpotList} />
     </Admin>
