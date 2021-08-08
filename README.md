@@ -1,45 +1,38 @@
 # Hotpot Orders
+Support REST APIs and UI display for managing Hotpot Orders and Ingredients   
+Created with [ReactAdmin](https://marmelab.com/react-admin/)
 
 ## Project Structure: 
-- /server: project server
-- /web: project client
+- /server: REST apis server
+- /web: UI display
 
-## Setup requirement: 
+## Requirement: 
 - NodeJS
 - MongoDB
 - Yarn (optional)
 
 ## Config: 
-- Install node_modules by `yarn` or `npm install` at  `/server` and `/web`
+- `yarn` or `npm install` at  `/server` and `/web` to install all dependencies
 - Create `.env` corresponding to `.env.example` 
 (Same key with `.env.example` corresponding)
-- Keys: 
+- `.env  file keys: 
     - Server: 
         - NODE_ENV: environment run NodeJS (`development`/`production`)
-        - PORT: server port, default `5000`
+        - PORT: server port, default `4000`
         - DB_URI: MongoDB url, default `mongodb://localhost:27017/hotpot`  
     - Web:  
-        - REACT_APP_API_URL: api url, default `http://localhost:5000/api`
-
-### `.env file`
-Default in localhost:
-- In server:
-NODE_ENV=development
-PORT=5000
-MONGO_URL=mongodb://localhost:27017/hotpot
-- In Websites:
-REACT_APP_API_URL=http://localhost:5000/api
+        - REACT_APP_API_URL: APIs url, default `http://localhost:4000/api`
 
 ### `APIs`
 - Current URL to server: `http://18.223.117.214:4000/`
 
-- `/api/hotpots`: fixed hotpot type with `ingredients` fields lists array of ingredients in that hotpots type 
+- `/api/hotpots`: fixed hotpot type 
     - `GET` /api/hotpots: Get all hotpots type
     - `GET` /api/hotpots/id: Get specified hotpot by `id` field
     - `POST` /api/hotpots: Add new hotpot type
     - `DELETE` /api/hotpots: Delete hotpot type in database
     
-- `/api/ingredients`: fixed ingredients with `id`, `name` and `quantity` fields
+- `/api/ingredients`: fixed ingredients type
     - `GET` /api/ingredients: Get all ingredients
     - `GET` /api/ingredients/id: Get specified ingredient by `id` field
     - `POST` /api/ingredients: Add new ingredient 
@@ -57,5 +50,7 @@ REACT_APP_API_URL=http://localhost:5000/api
     - `POST` /api/ingredientOrders: Add new ingredient order
     - `DELETE` /api/ingredientOrders: Delete ingredient order in database
 
-## Run:
-- Run `yarn dev` at root folder `./`
+## Development run:
+- Run `yarn dev` at root folder `./` to start both server and client.
+- Run `yarn start` at server folder `./server` to start server.
+- Run `yarn start` at web folder `./web` to start client.
