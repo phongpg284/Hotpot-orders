@@ -4,7 +4,7 @@ import { Create, Edit, SimpleForm, TextInput } from 'react-admin';
 export const HotpotCreate = (props) => (
     <Create {...props}>
         <SimpleForm>
-            <TextInput source="name" options={{ multiLine: true }} />
+            <TextInput label="Hotpot Type" source="name" />
         </SimpleForm>
     </Create>
 );
@@ -12,8 +12,8 @@ export const HotpotCreate = (props) => (
 export const HotpotEdit = (props) => (
     <Edit {...props}>
         <SimpleForm>
-            <TextInput disabled label="Id" source="id" />
-            <TextInput source="name" options={{ multiLine: true }} />
+            <TextInput disabled label="ID" source="id" />
+            <TextInput label="Hotpot Type" source="name" />
         </SimpleForm>
     </Edit>
 );

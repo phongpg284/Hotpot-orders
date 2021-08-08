@@ -6,15 +6,21 @@ const defaultDataProvider = simpleRestProvider(apiUrl);
 
 const DataProvider = {
     ...defaultDataProvider,
-    delete: (resource, params) => {
-        console.log(params,"hehe",resource,"call");
-        return fetch(apiUrl + "/" + resource + "/" + params.id, {
-            method: "DELETE",
-        }).then(res => res.json().then(resData => 
-        Object({data: {...resData}}))
-    )
-      // return dataProvider.delete(resource,params)
-    }
+    // delete: (resource, params) => {
+    //     console.log(params,"hehe",resource,"call");
+    //     return fetch(apiUrl + "/" + resource + "/" + params.id, {
+    //         method: "DELETE",
+    //     }).then(res => res.json().then(resData => 
+    //     Object({data: {...resData}}))
+    // )},
+    // update: (resource, params) => {
+    //     console.log(params,"hehe",resource,"call");
+    //     return fetch(apiUrl + "/" + resource + "/" + params.id, {
+    //         method: "PUT",
+    //         body: params.data
+    //     }).then(res => res.json().then(resData => 
+    //     Object({data: {...resData}}))
+    // )},
 }  
 
 export default DataProvider;

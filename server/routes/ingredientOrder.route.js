@@ -48,7 +48,7 @@ router.put("/ingredientOrders/:id", function(req,res) {
         if(!data)
         res.status(404).send({message: `Cannot find ingredient order with id: ${id}`})
         else {
-            res.send({ message: "Updated ingredient order successfully"})
+            res.json(data)
         }
     })
     .catch(err => {

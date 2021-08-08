@@ -1,5 +1,5 @@
 import * as React from "react";
-import { List, Datagrid, TextField, DateField, DeleteButton } from 'react-admin';
+import { List, Datagrid, TextField, DateField, DeleteButton, EditButton } from 'react-admin';
 import PostPagination from "../Pagination/PostPagination";
 
 export const HotpotList = (props) => (
@@ -7,6 +7,7 @@ export const HotpotList = (props) => (
         <Datagrid>
             <TextField source="name" label="Name" />
             <TextField source="ingredients" label="Ingredients"/>
+            <EditButton basePath="./hotpots"/>
             <DeleteButton undoable={false}/>
         </Datagrid>
     </List>

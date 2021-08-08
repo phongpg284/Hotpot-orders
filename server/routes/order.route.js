@@ -32,7 +32,10 @@ router.delete("/orders/:id", function(req,res) {
         if(!data)
         res.status(404).send({message: `Cannot find order with id: ${id}`})
         else {
-            res.send({ message: "Deleted order successfully"})
+            res.send({ 
+                message: "Deleted order successfully",
+                data: data
+            })
         }
     })
     .catch(err => {
@@ -47,7 +50,7 @@ router.put("/orders/:id", function(req,res) {
         if(!data)
         res.status(404).send({message: `Cannot find order with id: ${id}`})
         else {
-            res.send({ message: "Updated order successfully"})
+            res.json(data)
         }
     })
     .catch(err => {

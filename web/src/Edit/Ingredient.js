@@ -4,9 +4,9 @@ import { Create, Edit, SimpleForm, TextInput } from 'react-admin';
 export const IngredientCreate = (props) => (
     <Create {...props}>
         <SimpleForm>
-            <TextInput source="id" />
-            <TextInput source="name" />
-            <TextInput source="quantity" />
+            <TextInput source="id" label="ID"/>
+            <TextInput source="name" label="Name"/>
+            <TextInput source="quantity" label="Quantity"/>
         </SimpleForm>
     </Create>
 );
@@ -14,9 +14,9 @@ export const IngredientCreate = (props) => (
 export const IngredientEdit = (props) => (
     <Edit {...props}>
         <SimpleForm>
-            <TextInput source="id" />
-            <TextInput source="name" />
-            <TextInput source="quantity"/>
+            <TextInput source="id" label="ID"/>
+            <TextInput source="name" label="Name"/>
+            <TextInput source="quantity" label="Quantity"/>
         </SimpleForm>
     </Edit>
 );

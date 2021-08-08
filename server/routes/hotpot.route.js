@@ -50,7 +50,7 @@ router.put("/hotpots/:id", function(req,res) {
         if(!data)
         res.status(404).send({message: `Cannot find Hotpot with id: ${id}`})
         else {
-            res.send({ message: "Updated hotpot successfully"})
+            res.json(data)
         }
     })
     .catch(err => {
