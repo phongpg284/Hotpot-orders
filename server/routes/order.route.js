@@ -27,9 +27,30 @@ router.post('/orders', function(req,res){
 })
 
 router.delete("/orders/:id", function(req,res) {
-    Order.findByIdAndDelete(mongoose.Types.ObjectId(req.params.id), function (err, order){
-        if(err) console.log(err)
-        res.json(order)
+    Order.findByIdAndDelete(mongoose.Types.ObjectId(req.params.id))
+    .then(data => {
+        if(!data)
+        res.status(404).send({message: `Cannot find order with id: ${id}`})
+        else {
+            res.send({ message: "Deleted order successfully"})
+        }
+    })
+    .catch(err => {
+        res.status(500).send({ message: `Error deleted order with id: ${id}` })
+    })
+})
+
+router.put("/orders/:id", function(req,res) {
+    Order.findByIdAndUpdate({ id: req.params.id }, req.body)
+    .then(data => {
+        if(!data)
+        res.status(404).send({message: `Cannot find order with id: ${id}`})
+        else {
+            res.send({ message: "Updated order successfully"})
+        }
+    })
+    .catch(err => {
+        res.status(500).send({ message: `Error updated order with id: ${id}` })
     })
 })
 

@@ -30,9 +30,31 @@ router.post("/hotpots", function (req, res) {
 })
 
 router.delete("/hotpots/:id", function(req,res) {
-    Hotpot.findByIdAndDelete(mongoose.Types.ObjectId(req.params.id), function (err, hotpot){
-        if(err) console.log(err)
-        res.json(hotpot)
+    Hotpot.findByIdAndDelete(mongoose.Types.ObjectId(req.params.id))
+    .then(data => {
+        if(!data)
+        res.status(404).send({message: `Cannot find Hotpot with id: ${id}`})
+        else {
+            res.send({ message: "Deleted hotpot successfully"})
+        }
+    })
+    .catch(err => {
+        res.status(500).send({ message: `Error updated hotpot with id: ${id}` })
+    })
+})
+
+router.put("/hotpots/:id", function(req,res) {
+    var id = req.params.id;
+    Hotpot.findByIdAndUpdate(mongoose.Types.ObjectId(id), req.body, {useFindAndModify: false})
+    .then(data => {
+        if(!data)
+        res.status(404).send({message: `Cannot find Hotpot with id: ${id}`})
+        else {
+            res.send({ message: "Updated hotpot successfully"})
+        }
+    })
+    .catch(err => {
+        res.status(500).send({ message: `Error updated hotpot with id: ${id}` })
     })
 })
 

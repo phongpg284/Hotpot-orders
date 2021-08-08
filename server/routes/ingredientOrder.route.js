@@ -28,9 +28,30 @@ router.post("/ingredientOrders", function (req, res) {
 })
 
 router.delete("/ingredientOrders/:id", function(req,res) {
-    IngredientOrder.findByIdAndDelete(mongoose.Types.ObjectId(req.params.id), function (err, ingredientOrder){
-        if(err) console.log(err)
-        res.json(ingredientOrder)
+    IngredientOrder.findByIdAndDelete(mongoose.Types.ObjectId(req.params.id))
+    .then(data => {
+        if(!data)
+        res.status(404).send({message: `Cannot find ingredient order with id: ${id}`})
+        else {
+            res.send({ message: "Deleted ingredient order successfully"})
+        }
+    })
+    .catch(err => {
+        res.status(500).send({ message: `Error deleted ingredient order with id: ${id}` })
+    })
+})
+
+router.put("/ingredientOrders/:id", function(req,res) {
+    IngredientOrder.findByIdAndUpdate({ id: req.params.id }, req.body)
+    .then(data => {
+        if(!data)
+        res.status(404).send({message: `Cannot find ingredient order with id: ${id}`})
+        else {
+            res.send({ message: "Updated ingredient order successfully"})
+        }
+    })
+    .catch(err => {
+        res.status(500).send({ message: `Error updated ingredient order with id: ${id}` })
     })
 })
 

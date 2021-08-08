@@ -30,9 +30,30 @@ router.post("/ingredients", function (req, res) {
 })
 
 router.delete("/ingredients/:id", function(req,res) {
-    Ingredient.findOneAndDelete({id: req.params.id}, function (err, ingredient){
-        if(err) console.log(err)
-        res.json(ingredient)
+    Ingredient.findOneAndDelete({ id: req.params.id })
+    .then(data => {
+        if(!data)
+        res.status(404).send({message: `Cannot find ingredient with id: ${id}`})
+        else {
+            res.send({ message: "Deleted ingredient successfully"})
+        }
+    })
+    .catch(err => {
+        res.status(500).send({ message: `Error deleted ingredient with id: ${id}` })
+    })
+})
+
+router.put("/ingredients/:id", function(req,res) {
+    Ingredient.findOneAndUpdate({ id: req.params.id }, req.body)
+    .then(data => {
+        if(!data)
+        res.status(404).send({message: `Cannot find ingredient with id: ${id}`})
+        else {
+            res.send({ message: "Updated ingredient successfully"})
+        }
+    })
+    .catch(err => {
+        res.status(500).send({ message: `Error updated ingredient with id: ${id}` })
     })
 })
 
