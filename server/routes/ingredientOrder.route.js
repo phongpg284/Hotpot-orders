@@ -42,7 +42,8 @@ router.delete("/ingredientOrders/:id", function(req,res) {
 })
 
 router.put("/ingredientOrders/:id", function(req,res) {
-    IngredientOrder.findByIdAndUpdate({ id: req.params.id }, req.body)
+    var id = req.params.id;
+    IngredientOrder.findByIdAndUpdate(mongoose.Types.ObjectId(id), req.body)
     .then(data => {
         if(!data)
         res.status(404).send({message: `Cannot find ingredient order with id: ${id}`})

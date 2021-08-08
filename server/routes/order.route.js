@@ -41,7 +41,8 @@ router.delete("/orders/:id", function(req,res) {
 })
 
 router.put("/orders/:id", function(req,res) {
-    Order.findByIdAndUpdate({ id: req.params.id }, req.body)
+    var id = req.params.id
+    Order.findByIdAndUpdate(mongoose.Types.ObjectId(id), req.body)
     .then(data => {
         if(!data)
         res.status(404).send({message: `Cannot find order with id: ${id}`})
@@ -50,7 +51,7 @@ router.put("/orders/:id", function(req,res) {
         }
     })
     .catch(err => {
-        res.status(500).send({ message: `Error updated order with id: ${id}` })
+        res.status(500).send({ message: err })
     })
 })
 
