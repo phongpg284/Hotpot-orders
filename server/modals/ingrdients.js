@@ -5,6 +5,7 @@ var ingredientSchema = new mongoose.Schema({
     id: {type: Number, require: true},
     name: {type: String, require: true}, 
     quantity: {type: Number, require: true},
+    imgUrl: String
 })
 
 // ingredientSchema.method("toJSON", function() {

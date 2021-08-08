@@ -7,7 +7,7 @@ export const HotpotList = (props) => (
     <List {...props} title="List of hotpots" >
         <Datagrid>
             <TextField source="name" label="Name" />
-            <ImageField source="imgUrl" />
+            <ImageField source="imgUrl" label="Pic"/>
             <TextField source="ingredients" label="Ingredients"/>
             <EditButton basePath="./hotpots"/>
             <DeleteButton undoable={false}/>
