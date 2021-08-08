@@ -6,6 +6,7 @@ var ingredientOrderSchema = new mongoose.Schema({
     tableId: {type: Number, require: true},
     ingredient: {type: String, require: true}, 
     quantity: {type: Number, require: true},
+    imgUrl: String,
     createdAt: {type: Date, default: Date.now}
 })
 
