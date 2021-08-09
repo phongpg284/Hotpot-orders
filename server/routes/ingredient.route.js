@@ -1,6 +1,6 @@
 var router = require("express").Router()
-const Ingredient = require("../modals/ingrdients")
 var mongoose = require("mongoose");
+const Ingredient = require("../modals/ingrdients")
 router.get("/ingredients", function(req,res) {
     Ingredient.find(function (err, ingredients) {
         if(err)

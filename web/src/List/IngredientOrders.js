@@ -1,5 +1,5 @@
 import * as React from "react";
-import { List, Datagrid, TextField, DateField, DeleteButton, EditButton } from 'react-admin';
+import { List, Datagrid, TextField, DateField, DeleteButton, EditButton, ImageField } from 'react-admin';
 import PostPagination from "../Pagination/PostPagination";
 
 export const IngredientOrderList = (props) => (
@@ -8,6 +8,7 @@ export const IngredientOrderList = (props) => (
             {/* <TextField source="userId" label="User ID" /> */}
             <TextField source="tableId" label="Table ID" />
             <TextField source="ingredient" label="Ingredient"/>
+            <ImageField source="imgUrl" label="Pic"/>
             <TextField source="quantity" label="Quantity"/>
             <DateField source="createdAt" label="Created At" showTime/>
             <EditButton basePath="./ingredientOrders"/>

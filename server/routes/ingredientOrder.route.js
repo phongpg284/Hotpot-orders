@@ -1,6 +1,8 @@
 var router = require("express").Router()
-const IngredientOrder = require("../modals/ingredientOrders")
 var mongoose = require("mongoose");
+const IngredientOrder = require("../modals/ingredientOrders")
+const Ingredient = require("../modals/ingrdients")
+
 router.get("/ingredientOrders", function(req,res) {
     IngredientOrder.find(function (err, ingredientOrders) {
         if(err)
@@ -20,11 +22,20 @@ router.get("/ingredientOrders/:id", function(req,res) {
 
 router.post("/ingredientOrders", function (req, res) {
     var ingredientOrder = new IngredientOrder(req.body);
-    ingredientOrder.save(function (err, ingredientOrder) {
-        if (err)
-        console.log(err)
-        res.json(ingredientOrder)
-    })
+    Ingredient.findOne({name: req.body.ingredient})
+    .then(data => {
+        if(!data)
+        res.status(404).send({message: "Ingredient not found"})
+        else {
+            ingredientOrder.imgUrl = data.imgUrl
+            console.log(ingredientOrder)
+            ingredientOrder.save(function (err, ingredientOrder) {
+                if (err)
+                console.log(err)
+                res.json(ingredientOrder)
+            })
+        }
+    })    
 })
 
 router.delete("/ingredientOrders/:id", function(req,res) {
