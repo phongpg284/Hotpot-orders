@@ -9,7 +9,7 @@ router.get("/ordersId", function(req,res) {
     })
 })
 
-router.post('/orders', function(req,res){
+router.post('/ordersId', function(req,res){
     var newOrder = new Order(req.body);
     console.log(newOrder)
     newOrder.save(function(err, order ){
