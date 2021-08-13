@@ -10,6 +10,7 @@ var hotpot = require("./routes/hotpot.route");
 var ingredient = require("./routes/ingredient.route");
 var order = require("./routes/order.route");
 var ingredientOrder = require("./routes/ingredientOrder.route");
+var orderId = require("./routes/orderId.route");
 
 mongoose.connect(process.env.MONGO_URL,{useNewUrlParser:true, useUnifiedTopology: true }, (err) => {
     if(err) throw err;
@@ -36,6 +37,7 @@ app.use("/api", hotpot);
 app.use("/api", ingredient);
 app.use("/api", order);
 app.use("/api", ingredientOrder);
+app.use("/api", orderId);
 
 app.listen(PORT, () => {
     console.log(`Server listen at port: ${PORT}`)
