@@ -44,6 +44,10 @@ Created with [ReactAdmin](https://marmelab.com/react-admin/)
     - `POST` /api/orders: Add new hotpot orders 
     - `DELETE` /api/orders: Delete hotpot order in database
 
+- `/api/ordersId`: hotpot orders but only return Id
+    - `GET` /api/ordersId: Get all hotpot orders
+    - `POST` /api/ordersId: Add new hotpot orders 
+
 - `/api/ingredientOrder`: ingredient orders
     - `GET` /api/ingredientOrders: Get all ingredient orders
     - `GET` /api/ingredientOrders/id: Get specified ingredient orders by `id` field
