@@ -18,7 +18,7 @@ router.get("/restaurents/:id", function(req,res) {
 })
 
 router.post('/restaurents', function(req,res){
-    var newrestaurent = new Restaurent(req.body);
+    var newRestaurent = new Restaurent(req.body);
     newRestaurent.save(function(err, restaurent){
         if (err)  console.log(err);
         res.json(restaurent)
