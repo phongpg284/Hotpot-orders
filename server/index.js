@@ -11,6 +11,8 @@ var ingredient = require("./routes/ingredient.route");
 var order = require("./routes/order.route");
 var ingredientOrder = require("./routes/ingredientOrder.route");
 var orderId = require("./routes/orderId.route");
+var menu = require("./routes/menu.route");
+var restaurent = require("./routes/restaurents.route");
 
 mongoose.connect(process.env.MONGO_URL,{useNewUrlParser:true, useUnifiedTopology: true }, (err) => {
     if(err) throw err;
@@ -38,6 +40,8 @@ app.use("/api", ingredient);
 app.use("/api", order);
 app.use("/api", ingredientOrder);
 app.use("/api", orderId);
+app.use("/api", menu);
+app.use("/api", restaurent);
 
 app.listen(PORT, () => {
     console.log(`Server listen at port: ${PORT}`)

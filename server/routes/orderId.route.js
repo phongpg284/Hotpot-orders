@@ -11,7 +11,6 @@ router.get("/ordersId", function(req,res) {
 
 router.post('/ordersId', function(req,res){
     var newOrder = new Order(req.body);
-    console.log(newOrder)
     newOrder.save(function(err, order ){
         if (err)  console.log(err);
         res.json(order.id)

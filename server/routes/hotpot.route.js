@@ -21,7 +21,6 @@ router.get("/hotpots/:id", function(req,res) {
 
 router.post("/hotpots", function (req, res) {
     var hotpot = new Hotpot(req.body);
-    console.log(hotpot)
     hotpot.save(function (err, hotpots) {
         if (err)
         console.log(err)

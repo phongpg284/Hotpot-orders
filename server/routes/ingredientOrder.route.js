@@ -22,13 +22,12 @@ router.get("/ingredientOrders/:id", function(req,res) {
 
 router.post("/ingredientOrders", function (req, res) {
     var ingredientOrder = new IngredientOrder(req.body);
-    Ingredient.findOne({name: req.body.ingredient})
+    Ingredient.findOneAndUpdate({name: req.body.ingredient}, { $inc: { quantity: -req.body.quantity}})
     .then(data => {
         if(!data)
         res.status(404).send({message: "Ingredient not found"})
         else {
             ingredientOrder.imgUrl = data.imgUrl
-            console.log(ingredientOrder)
             ingredientOrder.save(function (err, ingredientOrder) {
                 if (err)
                 console.log(err)

@@ -1,32 +1,32 @@
 var router = require("express").Router()
-const Order = require("../modals/orders")
+const Menu = require("../modals/menus")
 var mongoose = require("mongoose");
 
-router.get("/orders", function(req,res) { 
-    Order.find(function (err, orders) {
+router.get("/menus", function(req,res) { 
+    Menu.find(function (err, menus) {
         if(err) console.log(err)
-        res.setHeader("Content-Range", orders.length)
-        res.json(orders);
+        res.setHeader("Content-Range", menus.length)
+        res.json(menus);
     })
 })
 
-router.get("/orders/:id", function(req,res) {
-    Order.findById(mongoose.Types.ObjectId(req.params.id), function (err, order){
+router.get("/menus/:id", function(req,res) {
+    Menu.findById(mongoose.Types.ObjectId(req.params.id), function (err, menu){
         if(err) console.log(err)
-        res.json(order)
+        res.json(menu)
     })
 })
 
-router.post('/orders', function(req,res){
-    var newOrder = new Order(req.body);
-    newOrder.save(function(err, order ){
+router.post('/menus', function(req,res){
+    var newMenu = new Menu(req.body);
+    newMenu.save(function(err, menu){
         if (err)  console.log(err);
-        res.json(order)
+        res.json(menu)
     })
 })
 
-router.delete("/orders/:id", function(req,res) {
-    Order.findByIdAndDelete(mongoose.Types.ObjectId(req.params.id))
+router.delete("/menus/:id", function(req,res) {
+    Menu.findByIdAndDelete(mongoose.Types.ObjectId(req.params.id))
     .then(data => {
         if(!data)
         res.status(404).send({message: `Cannot find order with id: ${id}`})
@@ -42,9 +42,9 @@ router.delete("/orders/:id", function(req,res) {
     })
 })
 
-router.put("/orders/:id", function(req,res) {
+router.put("/menus/:id", function(req,res) {
     var id = req.params.id
-    Order.findByIdAndUpdate(mongoose.Types.ObjectId(id), req.body)
+    Menu.findByIdAndUpdate(mongoose.Types.ObjectId(id), req.body)
     .then(data => {
         if(!data)
         res.status(404).send({message: `Cannot find order with id: ${id}`})
