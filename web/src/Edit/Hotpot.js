@@ -4,6 +4,7 @@ import { Create, Edit, SimpleForm, TextInput } from 'react-admin';
 export const HotpotCreate = (props) => (
     <Create {...props}>
         <SimpleForm>
+            <TextInput label="Id" source="id" />
             <TextInput label="Hotpot Type" source="name" />
             <TextInput source="imgUrl" label="Pic"/>
         </SimpleForm>

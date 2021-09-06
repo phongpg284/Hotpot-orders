@@ -8,6 +8,7 @@ export const HotpotList = (props) => {
     return (
     <List {...props} title="List of hotpots" >
         <Datagrid>
+            <TextField source="id" label="Id" />
             <TextField source="name" label="Name" />
             <ImageField source="imgUrl" label="Pic" className={classes.imgContainer}/>
             <TextField source="ingredients" label="Ingredients"/>

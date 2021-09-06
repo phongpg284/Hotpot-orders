@@ -23,7 +23,7 @@ function App() {
         <Resource name="ingredientOrders" list={IngredientOrderList} create={IngredientOrderCreate} edit={IngredientOrderEdit} />
         <Resource name="ingredients" list={IngredientList} create={IngredientCreate} edit={IngredientEdit} />
         <Resource name="hotpots" list={HotpotList} create={HotpotCreate} edit={HotpotEdit} />
-        <Resource name="menus" list={MenuList} create={MenuCreate} edit={MenuEdit} />
+        <Resource name="menu" list={MenuList} create={MenuCreate} edit={MenuEdit} />
         <Resource name="restaurents" list={RestaurentList} create={RestaurentCreate} edit={RestaurentEdit} />
     </Admin>
   )

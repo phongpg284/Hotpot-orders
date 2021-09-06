@@ -8,13 +8,12 @@ const menuFilters = [
 ];
 
 export const MenuList = (props) => (
-    <List {...props} title="List of orders" pagination={<PostPagination/>} perPage={5}>
+    <List {...props} title="Menu" pagination={<PostPagination/>} perPage={5}>
         <Datagrid>
+            <TextField source="id" label="Id" />
             <TextField source="name" label="Name" />
-            <TextField source="tableId" label="Table ID"/>
             <TextField source="price" label="Price"/>
-            <DateField source="createdAt" label="Created At" showTime/>
-            <EditButton basePath="./menus"/>
+            <EditButton basePath="./menu"/>
             <DeleteButton undoable={false}/>
         </Datagrid>
     </List>

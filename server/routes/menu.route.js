@@ -1,32 +1,37 @@
 var router = require("express").Router()
-const Menu = require("../modals/menus")
+const Hotpot = require("../modals/hotpot")
 var mongoose = require("mongoose");
 
-router.get("/menus", function(req,res) { 
-    Menu.find(function (err, menus) {
+router.get("/menu", function(req,res) { 
+    Hotpot.find(function (err, hotpots) {
         if(err) console.log(err)
-        res.setHeader("Content-Range", menus.length)
-        res.json(menus);
+        res.setHeader("Content-Range", hotpots.length)
+        res.json(hotpots.map((hotpot) => ({
+                name: hotpot.name,
+                id: hotpot.id
+            })
+        ));
     })
 })
 
-router.get("/menus/:id", function(req,res) {
-    Menu.findById(mongoose.Types.ObjectId(req.params.id), function (err, menu){
-        if(err) console.log(err)
-        res.json(menu)
-    })
-})
+// router.get("/menu/:id", function(req,res) {
+//     Hotpot.findById(mongoose.Types.ObjectId(req.params.id), function (err, hotpot){
+//         if(err) console.log(err)
+//         res.json(hotpot)
+//     })
+// })
 
-router.post('/menus', function(req,res){
-    var newMenu = new Menu(req.body);
-    newMenu.save(function(err, menu){
+router.post('/menu', function(req,res){
+    var newHotpot = new Hotpot(req.body);
+    newHotpot.save(function(err, hotpot){
         if (err)  console.log(err);
-        res.json(menu)
+        const {ingredients, ...restHotpot} = hotpot
+        res.json(restHotpot)
     })
 })
 
-router.delete("/menus/:id", function(req,res) {
-    Menu.findByIdAndDelete(mongoose.Types.ObjectId(req.params.id))
+router.delete("/menu/:id", function(req,res) {
+    Hotpot.findByIdAndDelete(mongoose.Types.ObjectId(req.params.id))
     .then(data => {
         if(!data)
         res.status(404).send({message: `Cannot find order with id: ${id}`})
@@ -42,9 +47,9 @@ router.delete("/menus/:id", function(req,res) {
     })
 })
 
-router.put("/menus/:id", function(req,res) {
+router.put("/hotpots/:id", function(req,res) {
     var id = req.params.id
-    Menu.findByIdAndUpdate(mongoose.Types.ObjectId(id), req.body)
+    Hotpot.findByIdAndUpdate(mongoose.Types.ObjectId(id), req.body)
     .then(data => {
         if(!data)
         res.status(404).send({message: `Cannot find order with id: ${id}`})
