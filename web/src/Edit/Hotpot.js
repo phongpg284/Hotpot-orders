@@ -5,6 +5,7 @@ export const HotpotCreate = (props) => (
     <Create {...props}>
         <SimpleForm>
             <TextInput label="Hotpot Type" source="name" />
+            <TextInput source="imgUrl" label="Pic"/>
         </SimpleForm>
     </Create>
 );
@@ -14,6 +15,7 @@ export const HotpotEdit = (props) => (
         <SimpleForm>
             <TextInput disabled label="ID" source="id" />
             <TextInput label="Hotpot Type" source="name" />
+            <TextInput source="imgUrl" label="Pic"/>
         </SimpleForm>
     </Edit>
 );

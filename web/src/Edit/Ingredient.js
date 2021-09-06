@@ -7,6 +7,7 @@ export const IngredientCreate = (props) => (
             <TextInput source="id" label="ID"/>
             <TextInput source="name" label="Name"/>
             <TextInput source="quantity" label="Quantity"/>
+            <TextInput source="imgUrl" label="Pic"/>
         </SimpleForm>
     </Create>
 );
@@ -17,6 +18,7 @@ export const IngredientEdit = (props) => (
             <TextInput source="id" label="ID"/>
             <TextInput source="name" label="Name"/>
             <TextInput source="quantity" label="Quantity"/>
+            <TextInput source="imgUrl" label="Pic"/>
         </SimpleForm>
     </Edit>
 );
