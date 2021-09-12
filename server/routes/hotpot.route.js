@@ -12,7 +12,7 @@ router.get("/hotpots", function(req,res) {
 })
 
 router.get("/hotpots/:id", function(req,res) {
-    Hotpot.findById(mongoose.Types.ObjectId(req.params.id), function (err, hotpot) {
+    Hotpot.findOne({ id: req.params.id }, function (err, hotpot) {
         if(err)
         console.log(err);
         res.json(hotpot);
@@ -29,7 +29,7 @@ router.post("/hotpots", function (req, res) {
 })
 
 router.delete("/hotpots/:id", function(req,res) {
-    Hotpot.findByIdAndDelete(mongoose.Types.ObjectId(req.params.id))
+    Hotpot.findOneAndDelete({ id: req.params.id })
     .then(data => {
         if(!data)
         res.status(404).send({message: `Cannot find Hotpot with id: ${id}`})
@@ -43,8 +43,8 @@ router.delete("/hotpots/:id", function(req,res) {
 })
 
 router.put("/hotpots/:id", function(req,res) {
-    var id = req.params.id;
-    Hotpot.findByIdAndUpdate(mongoose.Types.ObjectId(id), req.body, {useFindAndModify: false})
+    console.log(id)
+    Hotpot.findOneAndUpdate({ id: req.params.id }, req.body, {useFindAndModify: false})
     .then(data => {
         if(!data)
         res.status(404).send({message: `Cannot find Hotpot with id: ${id}`})
