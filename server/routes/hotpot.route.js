@@ -43,7 +43,6 @@ router.delete("/hotpots/:id", function(req,res) {
 })
 
 router.put("/hotpots/:id", function(req,res) {
-    console.log(id)
     Hotpot.findOneAndUpdate({ id: req.params.id }, req.body, {useFindAndModify: false})
     .then(data => {
         if(!data)
