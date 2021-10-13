@@ -8,13 +8,13 @@ const orderFilters = [
 ];
 
 export const OrderList = (props) => (
-    <List {...props} title="List of orders" pagination={<PostPagination/>} perPage={5}>
+    <List {...props} title="Orders" pagination={<PostPagination/>} perPage={5}>
         <Datagrid>
             <TextField source="userId" label="User ID" />
             <TextField source="tableId" label="Table ID"/>
             <TextField source="guestQty" label="Guest Qty"/>
             <TextField source="priceType" label="Price Type"/>
-            <TextField source="hotpotType" label="HotpotType"/>
+            <TextField source="hotpotType" label="List"/>
             <DateField source="createdAt" label="Created At" showTime/>
             <EditButton basePath="./orders"/>
             <DeleteButton undoable={false}/>

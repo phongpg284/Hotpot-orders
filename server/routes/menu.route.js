@@ -8,7 +8,8 @@ router.get("/menu", function(req,res) {
         res.setHeader("Content-Range", hotpots.length)
         res.json(hotpots.map((hotpot) => ({
                 name: hotpot.name,
-                id: hotpot.id
+                id: hotpot.id,
+                price: hotpot.price
             })
         ));
     })
@@ -31,34 +32,34 @@ router.post('/menu', function(req,res){
 })
 
 router.delete("/menu/:id", function(req,res) {
-    Hotpot.findByIdAndDelete(mongoose.Types.ObjectId(req.params.id))
+    Hotpot.findOneAndDelete({ id: req.params.id })
     .then(data => {
         if(!data)
-        res.status(404).send({message: `Cannot find order with id: ${id}`})
+        res.status(404).send({message: `Cannot find menu with id: ${id}`})
         else {
             res.send({ 
-                message: "Deleted order successfully",
+                message: "Deleted menu successfully",
                 data: data
             })
         }
     })
     .catch(err => {
-        res.status(500).send({ message: `Error deleted order with id: ${id}` })
+        res.status(500).send({ message: `Error deleted menu with id: ${id}` })
     })
 })
 
-router.put("/hotpots/:id", function(req,res) {
-    var id = req.params.id
-    Hotpot.findByIdAndUpdate(mongoose.Types.ObjectId(id), req.body)
+router.put("/menu/:id", function(req,res) {
+    console.log(req.body)
+    Hotpot.findOneAndUpdate({ id: req.params.id }, req.body, {useFindAndModify: false})
     .then(data => {
         if(!data)
-        res.status(404).send({message: `Cannot find order with id: ${id}`})
+        res.status(404).send({message: `Cannot find menu with id: ${id}`})
         else {
             res.json(data)
         }
     })
     .catch(err => {
-        res.status(500).send({ message: err })
+        res.status(500).send({ message: `Error updated menu with id: ${id}` })
     })
 })
 

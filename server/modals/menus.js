@@ -4,7 +4,7 @@ const mongoosePaginate = require('mongoose-paginate-v2');
 var menuSchema = mongoose.Schema({
     hotpotId: { type: Number, required: true },
     name: { type: String, required: true },
-    price: { type: Number, required: true },
+    price: { type: Number },
     createdAt: {type: Date, default: Date.now}
 })
 
