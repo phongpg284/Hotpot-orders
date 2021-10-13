@@ -14,12 +14,12 @@ router.get("/menu", function(req,res) {
     })
 })
 
-// router.get("/menu/:id", function(req,res) {
-//     Hotpot.findById(mongoose.Types.ObjectId(req.params.id), function (err, hotpot){
-//         if(err) console.log(err)
-//         res.json(hotpot)
-//     })
-// })
+router.get("/menu/:id", function(req,res) {
+    Hotpot.findOne({ id: req.params.id}, function (err, hotpot){
+        if(err) console.log(err)
+        res.json(hotpot)
+    })
+})
 
 router.post('/menu', function(req,res){
     var newHotpot = new Hotpot(req.body);
